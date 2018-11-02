@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.FormatMapper">
+  <resultMap id="BaseResultMap" type="com.bean.Format">
+    <result column="formatid" jdbcType="INTEGER" property="formatid" />
+    <result column="formattyoe" jdbcType="VARCHAR" property="formattyoe" />
+  </resultMap>
+  <insert id="insert" parameterType="com.bean.Format">
+    insert into format (formatid, formattyoe)
+    values (#{formatid,jdbcType=INTEGER}, #{formattyoe,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bean.Format">
+    insert into format
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="formatid != null">
+        formatid,
+      </if>
+      <if test="formattyoe != null">
+        formattyoe,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="formatid != null">
+        #{formatid,jdbcType=INTEGER},
+      </if>
+      <if test="formattyoe != null">
+        #{formattyoe,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
